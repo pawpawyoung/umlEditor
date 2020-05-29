@@ -1,10 +1,15 @@
 #include <QtGui>
+#include <QGraphicsScene>
+#include <QGraphicsSceneContextMenuEvent>
+#include <QMenu>
+
 #include "my_diagram_item.h"
 #include "my_diagram_arrow.h"
 #include "my_diagram_text_item.h"
 
 My_diagram_item::My_diagram_item(DiagramType diagramType, QMenu *contextMenu,QGraphicsItem *parent, QGraphicsScene *scene)
-    : QGraphicsPolygonItem(parent, scene)
+    // : QGraphicsPolygonItem(parent, scene)
+: QGraphicsPolygonItem(parent)
 {
     myDiagramType = diagramType;
     myContextMenu = contextMenu;
@@ -137,7 +142,7 @@ QPixmap My_diagram_item::image() const
     if(myDiagramType == EndState)
     {
         QPixmap pixmap(250, 250);
-        pixmap.load(":/final-state.png");       
+        pixmap.load(":/final-state.png");
         return pixmap.scaled(30,30);
     }
     if(myDiagramType == Actor)
@@ -206,7 +211,7 @@ void My_diagram_item::contextMenuEvent(QGraphicsSceneContextMenuEvent *event)
     myContextMenu->exec(event->screenPos());
 }
 
-QVariant My_diagram_item::itemChange(GraphicsItemChange change,const QVariant &value)//Если элемент переместился, нам надо обновить позицию стрелок, которые с ним соединены. Реализация QGraphicsItem ничего не делает, поэтому мы можем просто вернуть значение value.
+QVariant My_diagram_item::itemChange(GraphicsItemChange change,const QVariant &value)//Р•СЃР»Рё СЌР»РµРјРµРЅС‚ РїРµСЂРµРјРµСЃС‚РёР»СЃСЏ, РЅР°Рј РЅР°РґРѕ РѕР±РЅРѕРІРёС‚СЊ РїРѕР·РёС†РёСЋ СЃС‚СЂРµР»РѕРє, РєРѕС‚РѕСЂС‹Рµ СЃ РЅРёРј СЃРѕРµРґРёРЅРµРЅС‹. Р РµР°Р»РёР·Р°С†РёСЏ QGraphicsItem РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµС‚, РїРѕСЌС‚РѕРјСѓ РјС‹ РјРѕР¶РµРј РїСЂРѕСЃС‚Рѕ РІРµСЂРЅСѓС‚СЊ Р·РЅР°С‡РµРЅРёРµ value.
 {
     if (change == QGraphicsItem::ItemPositionChange)
     {
@@ -265,7 +270,8 @@ void My_diagram_item::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 QDataStream &operator<<(QDataStream &out, const My_diagram_item &boxItem)
 {
     out << boxItem.pos() << boxItem.getTypeElem() << boxItem.zValue();
-    QList<QGraphicsItem *> S =  boxItem.children();
+    // QList<QGraphicsItem *> S =  boxItem.children();
+    QList<QGraphicsItem *> S =  boxItem.childItems();
     QList<QString> Pol;
     for(int i=0;i!=S.count();i++)
     {

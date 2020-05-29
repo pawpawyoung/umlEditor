@@ -3,7 +3,8 @@
 
 #include <QTextDocument>
 My_diagram_text_item::My_diagram_text_item(QGraphicsItem *parent, QGraphicsScene *scene,ItemTextType itemTextType,NameTextType nameTextType)
-    : QGraphicsTextItem(parent, scene)
+    // : QGraphicsTextItem(parent, scene)
+    : QGraphicsTextItem("scene", parent)
 {
     myItemTextType = itemTextType;
     myNameTextType = nameTextType;

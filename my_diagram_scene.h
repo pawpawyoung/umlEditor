@@ -2,6 +2,7 @@
 #define MY_DIAGRAM_SCENE_H
 
 #include <QGraphicsScene>
+#include <QGraphicsSceneMouseEvent>
 #include "my_diagram_text_item.h"
 #include "my_diagram_item.h"
 //#include"my_diagram_path_item.h"

@@ -14,7 +14,7 @@ class My_diagram_arrow;
 class My_diagram_item : public QGraphicsPolygonItem
 {
 public:
-    enum { Type = UserType + 15 };//Перечисление Type является уникальным идентификатором класса. Он используется qgraphicsitem_cast(), который делает динамическое приведение графических элементов. Константа UserType является минимальным значением, которым может быть пользовательский тип графического элемента.
+    enum { Type = UserType + 15 };//РџРµСЂРµС‡РёСЃР»РµРЅРёРµ Type СЏРІР»СЏРµС‚СЃСЏ СѓРЅРёРєР°Р»СЊРЅС‹Рј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂРѕРј РєР»Р°СЃСЃР°. РћРЅ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ qgraphicsitem_cast(), РєРѕС‚РѕСЂС‹Р№ РґРµР»Р°РµС‚ РґРёРЅР°РјРёС‡РµСЃРєРѕРµ РїСЂРёРІРµРґРµРЅРёРµ РіСЂР°С„РёС‡РµСЃРєРёС… СЌР»РµРјРµРЅС‚РѕРІ. РљРѕРЅСЃС‚Р°РЅС‚Р° UserType СЏРІР»СЏРµС‚СЃСЏ РјРёРЅРёРјР°Р»СЊРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј, РєРѕС‚РѕСЂС‹Рј РјРѕР¶РµС‚ Р±С‹С‚СЊ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ С‚РёРї РіСЂР°С„РёС‡РµСЃРєРѕРіРѕ СЌР»РµРјРµРЅС‚Р°.
     enum DiagramType { Class_=0, Interface, Option, State, BeginState, EndState, SyncState, Shallow_history_state, Deep_history_state,Transition,Actor };
 
     My_diagram_item(DiagramType diagramType, QMenu *contextMenu = 0,QGraphicsItem *parent = 0, QGraphicsScene *scene = 0);
@@ -28,7 +28,7 @@ public:
     void addArrow(My_diagram_arrow *arrow);
     QPixmap image() const;
     int type() const
-        { return Type;}
+        { return Type; }
     int getTypeElem() const
     {
         return myDiagramType;
@@ -42,10 +42,10 @@ protected:
     QVariant itemChange(GraphicsItemChange change, const QVariant &value);
     virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = 0);
 private:
-    DiagramType myDiagramType;//Тип элемета (Квадрат, ромб и т.д.)
+    DiagramType myDiagramType;//РўРёРї СЌР»РµРјРµС‚Р° (РљРІР°РґСЂР°С‚, СЂРѕРјР± Рё С‚.Рґ.)
     QPolygonF myPolygon;
     QMenu *myContextMenu;
-    QList<My_diagram_arrow *> arrows;// список стрелок которые с ним соединены
+    QList<My_diagram_arrow *> arrows;// СЃРїРёСЃРѕРє СЃС‚СЂРµР»РѕРє РєРѕС‚РѕСЂС‹Рµ СЃ РЅРёРј СЃРѕРµРґРёРЅРµРЅС‹
 };
 
 QDataStream &operator<<(QDataStream &out, const My_diagram_item &boxItem);

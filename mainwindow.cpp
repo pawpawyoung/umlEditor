@@ -17,7 +17,7 @@
 #include "QTextDocument"
 #include "QCloseEvent"
 #include "QProcess"
-const int InserttextButton = 20; // константа говорит что мы будем вводить текст в диаграмму
+const int InserttextButton = 20; // РєРѕРЅСЃС‚Р°РЅС‚Р° РіРѕРІРѕСЂРёС‚ С‡С‚Рѕ РјС‹ Р±СѓРґРµРј РІРІРѕРґРёС‚СЊ С‚РµРєСЃС‚ РІ РґРёР°РіСЂР°РјРјСѓ
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     Spl->addWidget(ui->graphicsView);
     ui->gridLayout->addWidget(Spl);
     create_font_text_scale();
-//++++Работа со сценой++++
+//++++Р Р°Р±РѕС‚Р° СЃРѕ СЃС†РµРЅРѕР№++++
     itemMenu = new QMenu();
     itemMenu->addAction(ui->On_delete);
     itemMenu->addSeparator();
@@ -53,7 +53,7 @@ MainWindow::~MainWindow()
     writeSettings();
     delete ui;
 }
-//+++++++++++++++++++++++++++++Функции для редактирования текста+++++++++++++++++++++++++++++++++++
+//+++++++++++++++++++++++++++++Р¤СѓРЅРєС†РёРё РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ С‚РµРєСЃС‚Р°+++++++++++++++++++++++++++++++++++
 void MainWindow::fontSizeChanged(const QString &size)
 {
     handleFontChange();
@@ -85,45 +85,45 @@ void MainWindow::create_tool_bars()
     pointerButton->setCheckable(true);
     pointerButton->setChecked(true);
     pointerButton->setIcon(QIcon(QPixmap(":/move.png").scaled(47,47)));
-    pointerButton->setToolTip("Простое перемещение объектов");
+    pointerButton->setToolTip("РџСЂРѕСЃС‚РѕРµ РїРµСЂРµРјРµС‰РµРЅРёРµ РѕР±СЉРµРєС‚РѕРІ");
     pointerButton->setIconSize(QSize(50,50));
 
     QToolButton *linePointerButton2 = new QToolButton;
     linePointerButton2->setCheckable(true);
     linePointerButton2->setIcon(QIcon(QPixmap(":/dependency-right.png").scaled(47,47)));
-    linePointerButton2->setToolTip("Зависимость");
+    linePointerButton2->setToolTip("Р—Р°РІРёСЃРёРјРѕСЃС‚СЊ");
     linePointerButton2->setIconSize(QSize(50,50));
 
     QToolButton *linePointerButton3 = new QToolButton;
     linePointerButton3->setCheckable(true);
     linePointerButton3->setIcon(QIcon(QPixmap(":/association-right.png").scaled(47,47)));
-    linePointerButton3->setToolTip("Ассоциация");
+    linePointerButton3->setToolTip("РђСЃСЃРѕС†РёР°С†РёСЏ");
     linePointerButton3->setIconSize(QSize(50,50));
 
     QToolButton *linePointerButton4 = new QToolButton;
     linePointerButton4->setCheckable(true);
     linePointerButton4->setIcon(QIcon(QPixmap(":/aggregation-left.png").scaled(47,47)));
-    linePointerButton4->setToolTip("Агрегация");
+    linePointerButton4->setToolTip("РђРіСЂРµРіР°С†РёСЏ");
     linePointerButton4->setIconSize(QSize(50,50));
 
     QToolButton *linePointerButton5 = new QToolButton;
     linePointerButton5->setCheckable(true);
     linePointerButton5->setIcon(QIcon(QPixmap(":/composition-left.png").scaled(47,47)));
-    linePointerButton5->setToolTip("Композиция");
+    linePointerButton5->setToolTip("РљРѕРјРїРѕР·РёС†РёСЏ");
     linePointerButton5->setIconSize(QSize(50,50));
 
     QToolButton *linePointerButton6 = new QToolButton;
     linePointerButton6->setCheckable(true);
     linePointerButton6->setIcon(QIcon(QPixmap(":/generalization.png").scaled(47,47)));
-    linePointerButton6->setToolTip("Обобщение");
+    linePointerButton6->setToolTip("РћР±РѕР±С‰РµРЅРёРµ");
     linePointerButton6->setIconSize(QSize(50,50));
 
-    // Зависимость (линия пунктир на конце стрелка),
-    // Ассоциация (Сплошная линия),
-    // Агрегация (Линия с пустым ромбом, который находится ближе к классу который является целым,
-    //           т.е. который вмещает в себя все те агригуемые части)
-    // Композиция (частный случай агрегации только его части не являются самостоятельными программами ЗАКРАШЕННЫЙ РОМБ)
-    // Обобщение Сплошная линия с Пустой стрелкой
+    // Р—Р°РІРёСЃРёРјРѕСЃС‚СЊ (Р»РёРЅРёСЏ РїСѓРЅРєС‚РёСЂ РЅР° РєРѕРЅС†Рµ СЃС‚СЂРµР»РєР°),
+    // РђСЃСЃРѕС†РёР°С†РёСЏ (РЎРїР»РѕС€РЅР°СЏ Р»РёРЅРёСЏ),
+    // РђРіСЂРµРіР°С†РёСЏ (Р›РёРЅРёСЏ СЃ РїСѓСЃС‚С‹Рј СЂРѕРјР±РѕРј, РєРѕС‚РѕСЂС‹Р№ РЅР°С…РѕРґРёС‚СЃСЏ Р±Р»РёР¶Рµ Рє РєР»Р°СЃСЃСѓ РєРѕС‚РѕСЂС‹Р№ СЏРІР»СЏРµС‚СЃСЏ С†РµР»С‹Рј,
+    //           С‚.Рµ. РєРѕС‚РѕСЂС‹Р№ РІРјРµС‰Р°РµС‚ РІ СЃРµР±СЏ РІСЃРµ С‚Рµ Р°РіСЂРёРіСѓРµРјС‹Рµ С‡Р°СЃС‚Рё)
+    // РљРѕРјРїРѕР·РёС†РёСЏ (С‡Р°СЃС‚РЅС‹Р№ СЃР»СѓС‡Р°Р№ Р°РіСЂРµРіР°С†РёРё С‚РѕР»СЊРєРѕ РµРіРѕ С‡Р°СЃС‚Рё РЅРµ СЏРІР»СЏСЋС‚СЃСЏ СЃР°РјРѕСЃС‚РѕСЏС‚РµР»СЊРЅС‹РјРё РїСЂРѕРіСЂР°РјРјР°РјРё Р—РђРљР РђРЁР•РќРќР«Р™ Р РћРњР‘)
+    // РћР±РѕР±С‰РµРЅРёРµ РЎРїР»РѕС€РЅР°СЏ Р»РёРЅРёСЏ СЃ РџСѓСЃС‚РѕР№ СЃС‚СЂРµР»РєРѕР№
 
     pointerTypeGroup = new QButtonGroup(this);
     pointerTypeGroup->addButton(pointerButton, int(My_diagram_scene::MoveItem));
@@ -134,9 +134,9 @@ void MainWindow::create_tool_bars()
     pointerTypeGroup->addButton(linePointerButton6, int(My_diagram_scene::Generalization));
 
     connect(pointerTypeGroup, SIGNAL(buttonClicked(int)),this, SLOT(pointerGroupClicked(int)));
-    //======================================================сделали режимы сцены
-    buttonGroup = new QButtonGroup(this);       // мы создаем новый контейнер
-    buttonGroup->setExclusive(false);           //Может быть нажата только одна кнопка из этой группы
+    //======================================================СЃРґРµР»Р°Р»Рё СЂРµР¶РёРјС‹ СЃС†РµРЅС‹
+    buttonGroup = new QButtonGroup(this);       // РјС‹ СЃРѕР·РґР°РµРј РЅРѕРІС‹Р№ РєРѕРЅС‚РµР№РЅРµСЂ
+    buttonGroup->setExclusive(false);           //РњРѕР¶РµС‚ Р±С‹С‚СЊ РЅР°Р¶Р°С‚Р° С‚РѕР»СЊРєРѕ РѕРґРЅР° РєРЅРѕРїРєР° РёР· СЌС‚РѕР№ РіСЂСѓРїРїС‹
     connect(buttonGroup, SIGNAL(buttonClicked(int)),this, SLOT(buttonGroupClicked(int)));
 
     QGridLayout *layout = new QGridLayout;
@@ -153,55 +153,55 @@ void MainWindow::create_tool_bars()
 
     QGridLayout *textLayout = new QGridLayout();
     textLayout->addWidget(textButton, 0, 0, Qt::AlignHCenter);
-    textLayout->addWidget(new QLabel("Текст"), 1, 0, Qt::AlignCenter);
+    textLayout->addWidget(new QLabel("ж–‡жњ¬"), 1, 0, Qt::AlignCenter);
     QWidget *textWidget = new QWidget;
     textWidget->setLayout(textLayout);
 
     QGridLayout *arrowLayout = new QGridLayout();
     arrowLayout->addWidget(pointerButton, 0, 0, Qt::AlignHCenter);
-    arrowLayout->addWidget(new QLabel("Перемещение"), 1, 0, Qt::AlignCenter);
+    arrowLayout->addWidget(new QLabel("з§»еЉЁ"), 1, 0, Qt::AlignCenter);
     QWidget *arrowWidget = new QWidget;
     arrowWidget->setLayout(arrowLayout);
     layout->addWidget(arrowWidget,2,0);
 
     QGridLayout *arrowLayout2 = new QGridLayout();
     arrowLayout2->addWidget(linePointerButton2, 0, 0, Qt::AlignHCenter);
-    arrowLayout2->addWidget(new QLabel("Зависимость"), 1, 0, Qt::AlignCenter);
+    arrowLayout2->addWidget(new QLabel("дѕќиµ–е…ізі»"), 1, 0, Qt::AlignCenter);
     QWidget *arrowWidget2 = new QWidget;
     arrowWidget2->setLayout(arrowLayout2);
     layout->addWidget(arrowWidget2,2,1);
 
     QGridLayout *arrowLayout3 = new QGridLayout();
     arrowLayout3->addWidget(linePointerButton3, 0, 0, Qt::AlignHCenter);
-    arrowLayout3->addWidget(new QLabel("Ассоциация"), 1, 0, Qt::AlignCenter);
+    arrowLayout3->addWidget(new QLabel("иЃ”еђ€дјљ"), 1, 0, Qt::AlignCenter);
     QWidget *arrowWidget3 = new QWidget;
     arrowWidget3->setLayout(arrowLayout3);
     layout->addWidget(arrowWidget3,3,0);
 
     QGridLayout *arrowLayout4 = new QGridLayout();
     arrowLayout4->addWidget(linePointerButton4, 0, 0, Qt::AlignHCenter);
-    arrowLayout4->addWidget(new QLabel("Агрегация"), 1, 0, Qt::AlignCenter);
+    arrowLayout4->addWidget(new QLabel("иЃљй›†дЅњз”Ё"), 1, 0, Qt::AlignCenter);
     QWidget *arrowWidget4 = new QWidget;
     arrowWidget4->setLayout(arrowLayout4);
     layout->addWidget(arrowWidget4,3,1);
 
     QGridLayout *arrowLayout5 = new QGridLayout();
     arrowLayout5->addWidget(linePointerButton5, 0, 0, Qt::AlignHCenter);
-    arrowLayout5->addWidget(new QLabel("Композиция"), 1, 0, Qt::AlignCenter);
+    arrowLayout5->addWidget(new QLabel("з»„ж€ђ"), 1, 0, Qt::AlignCenter);
     QWidget *arrowWidget5 = new QWidget;
     arrowWidget5->setLayout(arrowLayout5);
     layout->addWidget(arrowWidget5,4,0);
 
     QGridLayout *arrowLayout6 = new QGridLayout();
     arrowLayout6->addWidget(linePointerButton6, 0, 0, Qt::AlignHCenter);
-    arrowLayout6->addWidget(new QLabel("Обобщение"), 1, 0, Qt::AlignCenter);
+    arrowLayout6->addWidget(new QLabel("ж¦‚ж‹¬"), 1, 0, Qt::AlignCenter);
     QWidget *arrowWidget6 = new QWidget;
     arrowWidget6->setLayout(arrowLayout6);
     layout->addWidget(arrowWidget6,4,1);
 
-    layout->addWidget(createCellWidget("Класс",My_diagram_item::Class_),0,0);
+    layout->addWidget(createCellWidget("з­‰зє§",My_diagram_item::Class_),0,0);
     layout->addWidget(textWidget, 0, 1);
-    layout->addWidget(createCellWidget("Интерфейс",My_diagram_item::Interface),1,0);
+    layout->addWidget(createCellWidget("жЋҐеЏЈ",My_diagram_item::Interface),1,0);
 
 
     layout->setRowStretch(5,10);
@@ -216,79 +216,79 @@ void MainWindow::create_tool_bars()
     //
     //
      QGridLayout *layout2 = new QGridLayout;
-     layout2->addWidget(createCellWidget("Актер",My_diagram_item::Actor),0,0);
-     layout2->addWidget(createCellWidget("Вариант использования",My_diagram_item::Option),0,1);
+     layout2->addWidget(createCellWidget("жј”е‘",My_diagram_item::Actor),0,0);
+     layout2->addWidget(createCellWidget("дЅїз”Ёж–№жЎ€",My_diagram_item::Option),0,1);
 
      QToolButton *one_button_ = new QToolButton;
      one_button_->setCheckable(true);
      one_button_->setChecked(true);
      one_button_->setIcon(QIcon(QPixmap(":/move.png").scaled(47,47)));
-     one_button_->setToolTip("Простое перемещение объектов");
+     one_button_->setToolTip("з®ЂеЌ•зљ„з§»еЉЁеЇ№и±Ў");
      one_button_->setIconSize(QSize(50,50));
 
      QGridLayout *tab2layout = new QGridLayout();
      tab2layout->addWidget(one_button_, 0, 0, Qt::AlignHCenter);
-     tab2layout->addWidget(new QLabel("Перемещение"), 1, 0, Qt::AlignCenter);
+     tab2layout->addWidget(new QLabel("з§»еЉЁ"), 1, 0, Qt::AlignCenter);
      QWidget *tabWidget = new QWidget;
      tabWidget->setLayout(tab2layout);
 
      QToolButton *two_button_ = new QToolButton;
      two_button_->setCheckable(true);
      two_button_->setIcon(QIcon(QPixmap(":/generalization.png").scaled(47,47)));
-     two_button_->setToolTip("Обобщение");
+     two_button_->setToolTip("РћР±РѕР±С‰РµРЅРёРµ");
      two_button_->setIconSize(QSize(50,50));
 
      QGridLayout *tab2layout2 = new QGridLayout();
      tab2layout2->addWidget(two_button_, 0, 0, Qt::AlignHCenter);
-     tab2layout2->addWidget(new QLabel("Обобщение"), 1, 0, Qt::AlignCenter);
+     tab2layout2->addWidget(new QLabel("ж¦‚ж‹¬"), 1, 0, Qt::AlignCenter);
      QWidget *tabWidget2 = new QWidget;
      tabWidget2->setLayout(tab2layout2);
 
      QToolButton *three_button_ = new QToolButton;
      three_button_->setCheckable(true);
      three_button_->setIcon(QIcon(QPixmap(":/dependency-right.png").scaled(47,47)));
-     three_button_->setToolTip("Зависимость");
+     three_button_->setToolTip("дѕќиµ–е…ізі»");
      three_button_->setIconSize(QSize(50,50));
 
      QGridLayout *tab2layout3 = new QGridLayout();
      tab2layout3->addWidget(three_button_, 0, 0, Qt::AlignHCenter);
-     tab2layout3->addWidget(new QLabel("Зависимость"), 1, 0, Qt::AlignCenter);
+     tab2layout3->addWidget(new QLabel("дѕќиµ–е…ізі»"), 1, 0, Qt::AlignCenter);
      QWidget *tabWidget3 = new QWidget;
      tabWidget3->setLayout(tab2layout3);
 
      QToolButton *four_button_ = new QToolButton;
      four_button_->setCheckable(true);
      four_button_->setIcon(QIcon(QPixmap(":/include.png").scaled(47,47)));
-     four_button_->setToolTip("Включение");
+     four_button_->setToolTip("жЋҐйЂљ");
      four_button_->setIconSize(QSize(50,50));
 
      QGridLayout *tab2layout4 = new QGridLayout();
      tab2layout4->addWidget(four_button_, 0, 0, Qt::AlignHCenter);
-     tab2layout4->addWidget(new QLabel("Включение"), 1, 0, Qt::AlignCenter);
+     tab2layout4->addWidget(new QLabel("жЋҐйЂљ"), 1, 0, Qt::AlignCenter);
      QWidget *tabWidget4 = new QWidget;
      tabWidget4->setLayout(tab2layout4);
 
      QToolButton *five_button_ = new QToolButton;
      five_button_->setCheckable(true);
      five_button_->setIcon(QIcon(QPixmap(":/extend.png").scaled(47,47)));
-     five_button_->setToolTip("Расширение");
+     five_button_->setToolTip("ж‰©еј ");
      five_button_->setIconSize(QSize(50,50));
 
      QGridLayout *tab2layout5 = new QGridLayout();
      tab2layout5->addWidget(five_button_, 0, 0, Qt::AlignHCenter);
-     tab2layout5->addWidget(new QLabel("Расширение"), 1, 0, Qt::AlignCenter);
+     tab2layout5->addWidget(new QLabel("ж‰©еј "), 1, 0, Qt::AlignCenter);
      QWidget *tabWidget5 = new QWidget;
      tabWidget5->setLayout(tab2layout5);
 
      QToolButton *six_button_ = new QToolButton;
      six_button_->setCheckable(true);
      six_button_->setIcon(QIcon(QPixmap(":/association-right.png").scaled(47,47)));
-     six_button_->setToolTip("Ассоциация");
+     six_button_->setToolTip("иЃ”еђ€");
      six_button_->setIconSize(QSize(50,50));
 
      QGridLayout *tab2layout6 = new QGridLayout();
      tab2layout6->addWidget(six_button_, 0, 0, Qt::AlignHCenter);
-     tab2layout6->addWidget(new QLabel("Ассоциация"), 1, 0, Qt::AlignCenter);
+     tab2layout6->addWidget(new QLabel("иЃ”еђ€"), 1, 0, Qt::AlignCenter);
      QWidget *tabWidget6 = new QWidget;
      tabWidget6->setLayout(tab2layout6);
 
@@ -325,31 +325,31 @@ void MainWindow::create_tool_bars()
          //
          //
      QGridLayout *layout3 = new QGridLayout;
-     // layout2->addWidget(createCellWidget("Актер",My_diagram_path_item::Actor),0,0);
+     // layout2->addWidget(createCellWidget("РђРєС‚РµСЂ",My_diagram_path_item::Actor),0,0);
 
 
      QToolButton *one_button_state = new QToolButton;
      one_button_state->setCheckable(true);
      one_button_state->setChecked(true);
      one_button_state->setIcon(QIcon(QPixmap(":/move.png").scaled(47,47)));
-     one_button_state->setToolTip("Простое перемещение объектов");
+     one_button_state->setToolTip("з®ЂеЌ•зљ„з§»еЉЁеЇ№и±Ў");
      one_button_state->setIconSize(QSize(50,50));
 
      QGridLayout *tab2layout_state = new QGridLayout();
      tab2layout_state->addWidget(one_button_state, 0, 0, Qt::AlignHCenter);
-     tab2layout_state->addWidget(new QLabel("Перемещение"), 1, 0, Qt::AlignCenter);
+     tab2layout_state->addWidget(new QLabel("з§»еЉЁ"), 1, 0, Qt::AlignCenter);
      QWidget *tabWidget_state = new QWidget;
      tabWidget_state->setLayout(tab2layout_state);
 
      QToolButton *six_button_state = new QToolButton;
      six_button_state->setCheckable(true);
      six_button_state->setIcon(QIcon(QPixmap(":/association-right.png").scaled(47,47)));
-     six_button_state->setToolTip("Транзакция");
+     six_button_state->setToolTip("дє¤ж“");
      six_button_state->setIconSize(QSize(50,50));
 
      QGridLayout *tab2layout_state_2 = new QGridLayout();
      tab2layout_state_2->addWidget(six_button_state, 0, 0, Qt::AlignHCenter);
-     tab2layout_state_2->addWidget(new QLabel("Переход"), 1, 0, Qt::AlignCenter);
+     tab2layout_state_2->addWidget(new QLabel("иї‡жёЎ"), 1, 0, Qt::AlignCenter);
      QWidget *tabWidget_state_2 = new QWidget;
      tabWidget_state_2->setLayout(tab2layout_state_2);
 
@@ -360,13 +360,13 @@ void MainWindow::create_tool_bars()
 
      layout3->setRowStretch(5,10);
 
-     layout3->addWidget(createCellWidget("Простое состояние",My_diagram_item::State),0,0);
-     layout3->addWidget(createCellWidget("Начальное состояние",My_diagram_item::BeginState),0,1);
-     layout3->addWidget(createCellWidget("Конечное состояние",My_diagram_item::EndState),1,0);
-     layout3->addWidget(createCellWidget("Состояние синхронизации",My_diagram_item::SyncState),1,1);
-     layout3->addWidget(createCellWidget("Недавнее\nисторическое\nсостояние",My_diagram_item::Shallow_history_state),2,0);
-     layout3->addWidget(createCellWidget("Давнее\nисторическое\nсостояние",My_diagram_item::Deep_history_state),2,1);
-     layout3->addWidget(createCellWidget("Параллельный переход",My_diagram_item::Transition),3,0);
+     layout3->addWidget(createCellWidget("з®ЂеЌ•зЉ¶жЂЃ",My_diagram_item::State),0,0);
+     layout3->addWidget(createCellWidget("е€ќе§‹зЉ¶жЂЃ",My_diagram_item::BeginState),0,1);
+     layout3->addWidget(createCellWidget("з»€жЂЃ",My_diagram_item::EndState),1,0);
+     layout3->addWidget(createCellWidget("еђЊж­ҐзЉ¶жЂЃ",My_diagram_item::SyncState),1,1);
+     layout3->addWidget(createCellWidget("жњЂиї‘зљ„",My_diagram_item::Shallow_history_state),2,0);
+     layout3->addWidget(createCellWidget("еѕ€д№…д»Ґе‰Ќ",My_diagram_item::Deep_history_state),2,1);
+     layout3->addWidget(createCellWidget("е№іиЎЊи·ѓиїЃ",My_diagram_item::Transition),3,0);
 
      layout3->addWidget(tabWidget_state);
      layout3->addWidget(tabWidget_state_2);
@@ -376,11 +376,11 @@ void MainWindow::create_tool_bars()
 //for constructor
 void MainWindow::create_font_text_scale()
 {
-    //++++++++++++++++++++++++Инициализация_Шрифта+++++++++++++++++++++++++++++++++++++
+    //++++++++++++++++++++++++РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ_РЁСЂРёС„С‚Р°+++++++++++++++++++++++++++++++++++++
         fontCombo = new QFontComboBox();
         connect(fontCombo, SIGNAL(currentFontChanged(QFont)),
                 this, SLOT(currentFontChanged(QFont)));
-    //++++++++++++++++++++++++Инициализация_Размера_Шрифта+++++++++++++++++++++++++++++++++++++
+    //++++++++++++++++++++++++РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ_Р Р°Р·РјРµСЂР°_РЁСЂРёС„С‚Р°+++++++++++++++++++++++++++++++++++++
         fontSizeCombo = new QComboBox;
         fontSizeCombo->setEditable(true);
         for (int i = 8; i < 30; i = i + 2)
@@ -391,7 +391,7 @@ void MainWindow::create_font_text_scale()
         ui->Text_ToolBar->addWidget(fontSizeCombo);
         connect(fontSizeCombo, SIGNAL(currentIndexChanged(QString)),
                 this, SLOT(fontSizeChanged(QString)));
-    //++++++++++++++++++++++++Инициализация_Масштаба+++++++++++++++++++++++++++++++++++++
+    //++++++++++++++++++++++++РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ_РњР°СЃС€С‚Р°Р±Р°+++++++++++++++++++++++++++++++++++++
         sceneScaleCombo = new QComboBox;
        // sceneScaleCombo->setEditable(true);
         QStringList scales;
@@ -402,8 +402,8 @@ void MainWindow::create_font_text_scale()
                 this, SLOT(sceneScaleChanged(QString)));
         ui->Mode_ToolBar->addWidget(sceneScaleCombo);
 }
-//+++++++++++++++++++++++++++++Функции для редактирования текста+++++++++++++++++++++++++++++++++++
-//+============================Запись настроек+====================================================
+//+++++++++++++++++++++++++++++Р¤СѓРЅРєС†РёРё РґР»СЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ С‚РµРєСЃС‚Р°+++++++++++++++++++++++++++++++++++
+//+============================Р—Р°РїРёСЃСЊ РЅР°СЃС‚СЂРѕРµРє+====================================================
 void MainWindow::readSettings()
 {
     QSettings my_settings("Pete", "UML 2.0");
@@ -455,8 +455,8 @@ void MainWindow::writeSettings()
     my_settings.setValue("underline",ui->Underline->isChecked());
     my_settings.endGroup();
 }
-//=============================Запись настроек=====================================================
-//=============================Настройка сцены=====================================================
+//=============================Р—Р°РїРёСЃСЊ РЅР°СЃС‚СЂРѕРµРє=====================================================
+//=============================РќР°СЃС‚СЂРѕР№РєР° СЃС†РµРЅС‹=====================================================
 void MainWindow::sceneScaleChanged(QString scale)
 {
     double newScale;
@@ -473,12 +473,12 @@ void MainWindow::itemInserted(My_diagram_item *item)
 {
   // scene->addWidget()
 
-  /*ОТЖИмаем кнопку*/
-    pointerTypeGroup->button(int(My_diagram_scene::MoveItem /*режим movement*/))->setChecked(true);//Устанавливает РЕЖИМ movement
-    tab_2_Group->button(int(My_diagram_scene::MoveItem /*режим movement*/))->setChecked(true);
-    State_Group->button(int(My_diagram_scene::MoveItem /*режим movement*/))->setChecked(true);
-    scene->setMode(My_diagram_scene::Mode(pointerTypeGroup->checkedId()));//Устанавливаем режим треугольник, ромбик и т.д.
-    buttonGroup->button(int(item->diagramType()))->setChecked(false);//Выключаем кнопку которую установили
+  /*РћРўР–РРјР°РµРј РєРЅРѕРїРєСѓ*/
+    pointerTypeGroup->button(int(My_diagram_scene::MoveItem /*СЂРµР¶РёРј movement*/))->setChecked(true);//РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ Р Р•Р–РРњ movement
+    tab_2_Group->button(int(My_diagram_scene::MoveItem /*СЂРµР¶РёРј movement*/))->setChecked(true);
+    State_Group->button(int(My_diagram_scene::MoveItem /*СЂРµР¶РёРј movement*/))->setChecked(true);
+    scene->setMode(My_diagram_scene::Mode(pointerTypeGroup->checkedId()));//РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЂРµР¶РёРј С‚СЂРµСѓРіРѕР»СЊРЅРёРє, СЂРѕРјР±РёРє Рё С‚.Рґ.
+    buttonGroup->button(int(item->diagramType()))->setChecked(false);//Р’С‹РєР»СЋС‡Р°РµРј РєРЅРѕРїРєСѓ РєРѕС‚РѕСЂСѓСЋ СѓСЃС‚Р°РЅРѕРІРёР»Рё
 }
 void MainWindow::textInserted(QGraphicsTextItem *item)
 {
@@ -490,14 +490,14 @@ void MainWindow::itemSelected(QGraphicsItem *item)
     My_diagram_text_item *textItem = qgraphicsitem_cast<My_diagram_text_item *>(item);
     QFont font = textItem->font();
     QColor color = textItem->defaultTextColor();
-    fontCombo->setCurrentFont(font);// устанавливаем ТЕКСТ в верх чтобы было видно что он поменялся
-    fontSizeCombo->setEditText(QString().setNum(font.pointSize()/*возращаем размер шрифта*/)/*устанавливаем значение и добавляем ссылку на строку*/);
+    fontCombo->setCurrentFont(font);// СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј РўР•РљРЎРў РІ РІРµСЂС… С‡С‚РѕР±С‹ Р±С‹Р»Рѕ РІРёРґРЅРѕ С‡С‚Рѕ РѕРЅ РїРѕРјРµРЅСЏР»СЃСЏ
+    fontSizeCombo->setEditText(QString().setNum(font.pointSize()/*РІРѕР·СЂР°С‰Р°РµРј СЂР°Р·РјРµСЂ С€СЂРёС„С‚Р°*/)/*СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј Р·РЅР°С‡РµРЅРёРµ Рё РґРѕР±Р°РІР»СЏРµРј СЃСЃС‹Р»РєСѓ РЅР° СЃС‚СЂРѕРєСѓ*/);
     fontSizeChanged(QString().setNum(font.pointSize()));
     ui->Bold->setChecked(font.weight() == QFont::Bold);
     ui->Italic->setChecked(font.italic());
     ui->Underline->setChecked(font.underline());
 }
-QWidget *MainWindow::createCellWidget(const QString &text,My_diagram_item::DiagramType type) // Делаем кнопки на форме ТООЛ кнопки с треугольником, ромбом и т.д.
+QWidget *MainWindow::createCellWidget(const QString &text,My_diagram_item::DiagramType type) // Р”РµР»Р°РµРј РєРЅРѕРїРєРё РЅР° С„РѕСЂРјРµ РўРћРћР› РєРЅРѕРїРєРё СЃ С‚СЂРµСѓРіРѕР»СЊРЅРёРєРѕРј, СЂРѕРјР±РѕРј Рё С‚.Рґ.
 {
     My_diagram_item item(type, itemMenu);
 
@@ -520,24 +520,24 @@ QWidget *MainWindow::createCellWidget(const QString &text,My_diagram_item::Diagr
 
     return widget;
 }
-void MainWindow::buttonGroupClicked(int id)// При добавлении АЙТЕМА (нового компонента для диаграммы)
+void MainWindow::buttonGroupClicked(int id)// РџСЂРё РґРѕР±Р°РІР»РµРЅРёРё РђР™РўР•РњРђ (РЅРѕРІРѕРіРѕ РєРѕРјРїРѕРЅРµРЅС‚Р° РґР»СЏ РґРёР°РіСЂР°РјРјС‹)
 {
     QList<QAbstractButton *> buttons = buttonGroup->buttons();
     foreach (QAbstractButton *button, buttons)
     {
-    if (buttonGroup->button(id) != button)// Устанавливаем ЛОЖЬ тем кнопкам которые не нажаты
+    if (buttonGroup->button(id) != button)// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј Р›РћР–Р¬ С‚РµРј РєРЅРѕРїРєР°Рј РєРѕС‚РѕСЂС‹Рµ РЅРµ РЅР°Р¶Р°С‚С‹
         button->setChecked(false);
     }
-    if (id == InserttextButton) // Если мы собираемся вставить текст в диаграмму то подготавливаем сцену для ввода текста
+    if (id == InserttextButton) // Р•СЃР»Рё РјС‹ СЃРѕР±РёСЂР°РµРјСЃСЏ РІСЃС‚Р°РІРёС‚СЊ С‚РµРєСЃС‚ РІ РґРёР°РіСЂР°РјРјСѓ С‚Рѕ РїРѕРґРіРѕС‚Р°РІР»РёРІР°РµРј СЃС†РµРЅСѓ РґР»СЏ РІРІРѕРґР° С‚РµРєСЃС‚Р°
     {
         scene->setMode(My_diagram_scene::InsertText);
     } else
     {
-        scene->setItemType(My_diagram_item::DiagramType(id));//ЗАдаем тип айтема
-        scene->setMode(My_diagram_scene::InsertItem); // РЕжим вставки АЙТЕМА
+        scene->setItemType(My_diagram_item::DiagramType(id));//Р—РђРґР°РµРј С‚РёРї Р°Р№С‚РµРјР°
+        scene->setMode(My_diagram_scene::InsertItem); // Р Р•Р¶РёРј РІСЃС‚Р°РІРєРё РђР™РўР•РњРђ
     }
 }
-void MainWindow::pointerGroupClicked(int si)// обработка режима стрелки и линии
+void MainWindow::pointerGroupClicked(int si)// РѕР±СЂР°Р±РѕС‚РєР° СЂРµР¶РёРјР° СЃС‚СЂРµР»РєРё Рё Р»РёРЅРёРё
 {
     if(si == My_diagram_scene::MoveItem)
     {
@@ -580,21 +580,21 @@ void MainWindow::pointerGroupClicked(int si)// обработка режима стрелки и линии
                 break;
         }
     }
-    //scene->setMode(My_diagram_scene::Mode(pointerTypeGroup->checkedId())); // В зависимости от того что мы нажали стрелку или линию тот и устанавливается режим
+    //scene->setMode(My_diagram_scene::Mode(pointerTypeGroup->checkedId())); // Р’ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ С‚РѕРіРѕ С‡С‚Рѕ РјС‹ РЅР°Р¶Р°Р»Рё СЃС‚СЂРµР»РєСѓ РёР»Рё Р»РёРЅРёСЋ С‚РѕС‚ Рё СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚СЃСЏ СЂРµР¶РёРј
     //scene->setArrows();
 }
-//=============================Настройка сцены=====================================================
-//_____________________НАстройка действий __________________________________________
+//=============================РќР°СЃС‚СЂРѕР№РєР° СЃС†РµРЅС‹=====================================================
+//_____________________РќРђСЃС‚СЂРѕР№РєР° РґРµР№СЃС‚РІРёР№ __________________________________________
 void MainWindow::on_On_delete_triggered()
 {
-    foreach (QGraphicsItem *item, scene->selectedItems())// возвращает список выбранных АЙТЕМОВ
+    foreach (QGraphicsItem *item, scene->selectedItems())// РІРѕР·РІСЂР°С‰Р°РµС‚ СЃРїРёСЃРѕРє РІС‹Р±СЂР°РЅРЅС‹С… РђР™РўР•РњРћР’
     {
-        if (item->type() == My_diagram_arrow::Type ) // Если это стрелка то..
+        if (item->type() == My_diagram_arrow::Type ) // Р•СЃР»Рё СЌС‚Рѕ СЃС‚СЂРµР»РєР° С‚Рѕ..
         {
             scene->removeItem(item);
             My_diagram_arrow *arrow = qgraphicsitem_cast<My_diagram_arrow *>(item);
-            arrow->startItem()->removeArrow(arrow);// возвращает АЙтем - начало стрелки и затем удаляет его
-            arrow->endItem()->removeArrow(arrow);// конец стрелки и затем удаляет его
+            arrow->startItem()->removeArrow(arrow);// РІРѕР·РІСЂР°С‰Р°РµС‚ РђР™С‚РµРј - РЅР°С‡Р°Р»Рѕ СЃС‚СЂРµР»РєРё Рё Р·Р°С‚РµРј СѓРґР°Р»СЏРµС‚ РµРіРѕ
+            arrow->endItem()->removeArrow(arrow);// РєРѕРЅРµС† СЃС‚СЂРµР»РєРё Рё Р·Р°С‚РµРј СѓРґР°Р»СЏРµС‚ РµРіРѕ
             delete item;
             continue;
 
@@ -664,7 +664,7 @@ void MainWindow::on_Italic_triggered()
     handleFontChange();
 }
 
-//_____________________НАстройка действий __________________________________________
+//_____________________РќРђСЃС‚СЂРѕР№РєР° РґРµР№СЃС‚РІРёР№ __________________________________________
 void MainWindow::tab_2_GroupClicked(int id)
 {
     if(id == My_diagram_scene::MoveItem)
@@ -699,7 +699,7 @@ void MainWindow::on_New_triggered()
 void MainWindow::on_Open_triggered()
 {
    // QString fileName = QFileDialog::getOpenFileName(this);
-    QString fileName = QFileDialog::getOpenFileName(this,"Открыть файл","","Diagram (*.dia)");
+    QString fileName = QFileDialog::getOpenFileName(this,"ж‰“ејЂж–‡д»¶","","Diagram (*.dia)");
     if (!fileName.isEmpty())
         loadFile(fileName);
 }
@@ -726,13 +726,13 @@ bool MainWindow::maybeSave()
         QPixmap Text(":/Warning.png");
         ret.setWindowIcon(Window_Title);
         ret.setIconPixmap(Text);
-        ret.setText("Документ был изменен\nВы хотите сохранить изменения?");
+        ret.setText("ж–‡д»¶е·Іж›ґж”№гЂ‚дЅ жѓідїќе­ж›ґж”№еђ—пјџ");
         ret.addButton(QMessageBox::Save);
         ret.addButton(QMessageBox::Discard);
         ret.addButton(QMessageBox::Cancel);
-        ret.setButtonText(QMessageBox::Save,"Сохранить");
-        ret.setButtonText(QMessageBox::Discard,"Не сохранять");
-        ret.setButtonText(QMessageBox::Cancel,"Отмена");
+        ret.setButtonText(QMessageBox::Save,"дїќе­");
+        ret.setButtonText(QMessageBox::Discard,"дёЌдїќе­");
+        ret.setButtonText(QMessageBox::Cancel,"еЏ–ж¶€");
         int reft = ret.exec();
         switch (reft)
         {
@@ -759,7 +759,7 @@ bool MainWindow::save()
 bool MainWindow::saveAs()
 {
     //QString fileName = QFileDialog::getSaveFileName(this);
-    QString fileName = QFileDialog::getSaveFileName(this,"Сохранить файл","","Diagram (*.dia)");
+    QString fileName = QFileDialog::getSaveFileName(this,"дїќе­ж–‡д»¶","","Diagram (*.dia)");
     if (fileName.isEmpty())
         return false;
     return saveFile(fileName);
@@ -780,8 +780,8 @@ bool MainWindow::saveFile(const QString &fileName)
     QFile file(fileName);
     if (!file.open(QIODevice::WriteOnly/*QFile::WriteOnly | QFile::Text*/))
     {
-        QMessageBox::warning(this, tr("Мое_Приложение"),
-                             tr("Ошибка при чтении файла %1:\n%2.")
+        QMessageBox::warning(this, tr("ж€‘зљ„з”іиЇ·"),
+                             tr("иЇ»еЏ–ж–‡д»¶%1ж—¶е‡єй”™: \n%2")
                              .arg(fileName)
                              .arg(file.errorString()));
         return false;
@@ -802,8 +802,8 @@ bool MainWindow::saveFile(const QString &fileName)
 #endif
 
     setCurrentFile(fileName);
-    //ui->statusBar()->showMessage(tr("Файл сохранен"), 2000);
-    ui->statusBar->showMessage("Файл сохранен", 2000);
+    //ui->statusBar()->showMessage(tr("Р¤Р°Р№Р» СЃРѕС…СЂР°РЅРµРЅ"), 2000);
+    ui->statusBar->showMessage("ж–‡д»¶е·Ідїќе­", 2000);
     elms_on_scene = scene->items().size();
     scene->ismodified = false;
     return true;
@@ -815,7 +815,7 @@ void MainWindow::setCurrentFile(const QString &fileName)
     MainWindow::setWindowModified(false);
     QString shownName = curFile;
     if (curFile.isEmpty())
-        shownName = "без_имени.ds";
+        shownName = "жІЎжњ‰uзљ„еђЌе­—";
     MainWindow::setWindowFilePath(shownName);
 }
 void MainWindow::loadFile(const QString &fileName)
@@ -833,8 +833,8 @@ void MainWindow::loadFile(const QString &fileName)
     QFile file(fileName);
     if (!file.open(QIODevice::ReadOnly/*QFile::ReadOnly | QFile::Text*/))
     {
-        QMessageBox::warning(this, tr("Мое приложение"),
-                             tr("Невозможно записать файл %1:\n%2.")
+        QMessageBox::warning(this, tr("ж€‘зљ„еє”з”ЁзЁ‹еєЏ"),
+                             tr("ж— жі•е†™е…Ґж–‡д»¶ %1:\n%2.")
                              .arg(fileName)
                              .arg(file.errorString()));
         return;
@@ -919,7 +919,7 @@ void MainWindow::readItems(QDataStream &in)
             {
                 My_diagram_text_item *textItem = new My_diagram_text_item();
                 scene->addItem(textItem);
-                in >> *textItem;       
+                in >> *textItem;
                 textItem->setTextInteractionFlags(Qt::TextEditorInteraction);
                 connect(textItem, SIGNAL(lostFocus(My_diagram_text_item*)),
                         scene, SLOT(editorLostFocus(My_diagram_text_item*)));

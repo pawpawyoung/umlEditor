@@ -32,4 +32,3 @@ RC_FILE = myapp.rc
 CONFIG += exception
 
 QMAKE_LFLAGS += -static-libgcc
-#Это нужно для статического линка

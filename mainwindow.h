@@ -38,14 +38,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QFontComboBox *fontCombo; // Для изменения шрифта
-    QComboBox *fontSizeCombo; // Для изменения размера шрифта
-    QComboBox *sceneScaleCombo; // Для изменения масштаба View
-    QButtonGroup *pointerTypeGroup;// Для изменения режима работы сцены (режим движения, режим добавления линии)
-    QButtonGroup *buttonGroup;// Содержит Изображения Элементов
+    QFontComboBox *fontCombo; // 更改字体
+    QComboBox *fontSizeCombo; // 更改字体大小
+    QComboBox *sceneScaleCombo; // 改变View的规模
+    QButtonGroup *pointerTypeGroup;// 更改场景模式）（运动模式，添加线路模式）
+    QButtonGroup *buttonGroup;// 包含元素的图像
     QButtonGroup *tab_2_Group;
     QButtonGroup *State_Group;
-    QMenu *itemMenu;// Меню вызываемое правой кнопкой мыши на сцене
+    QMenu *itemMenu;// 右键在舞台上调用的菜单
     My_diagram_scene *scene;
     void readSettings();
     void writeSettings();

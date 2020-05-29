@@ -38,17 +38,17 @@
           </font>
          </property>
          <attribute name="title">
-          <string>Диаграммы классов</string>
+          <string>类图</string>
          </attribute>
         </widget>
         <widget class="QWidget" name="automation">
          <attribute name="title">
-          <string>Диаграмма состояний</string>
+          <string>状态图</string>
          </attribute>
         </widget>
         <widget class="QWidget" name="use_case">
          <attribute name="title">
-          <string>Диаграмма вариантов использования</string>
+          <string>用例图</string>
          </attribute>
         </widget>
        </widget>
@@ -85,7 +85,7 @@
      <x>0</x>
      <y>0</y>
      <width>659</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -103,7 +103,7 @@
      <bool>true</bool>
     </property>
     <property name="title">
-     <string>&amp;Файл</string>
+     <string>文件</string>
     </property>
     <addaction name="New"/>
     <addaction name="Open"/>
@@ -115,7 +115,7 @@
      <bool>false</bool>
     </property>
     <property name="title">
-     <string>&amp;Помощь</string>
+     <string>&amp;帮助</string>
     </property>
     <property name="separatorsCollapsible">
      <bool>false</bool>
@@ -167,10 +167,10 @@
      <normaloff>:/applications-internet.png</normaloff>:/applications-internet.png</iconset>
    </property>
    <property name="text">
-    <string>На передний план</string>
+    <string>把摆在首位</string>
    </property>
    <property name="toolTip">
-    <string>Переместить выбранную фигуру на передний план</string>
+    <string>移动选定的形状到前面</string>
    </property>
    <property name="shortcut">
     <string>Q</string>
@@ -182,10 +182,10 @@
      <normaloff>:/package_network.png</normaloff>:/package_network.png</iconset>
    </property>
    <property name="text">
-    <string>На задний план</string>
+    <string>把放在次要地位</string>
    </property>
    <property name="toolTip">
-    <string>Переместить выбранную фигуру на задний план</string>
+    <string>将选定的形状向后移动</string>
    </property>
    <property name="shortcut">
     <string>E</string>
@@ -197,10 +197,10 @@
      <normaloff>:/trash-full.png</normaloff>:/trash-full.png</iconset>
    </property>
    <property name="text">
-    <string>Удалить</string>
+    <string>删除</string>
    </property>
    <property name="toolTip">
-    <string>Удалить выбранную фигуру</string>
+    <string>删除选定的形状</string>
    </property>
    <property name="shortcut">
     <string>Del</string>
@@ -215,10 +215,10 @@
      <normaloff>:/format-text-bold.png</normaloff>:/format-text-bold.png</iconset>
    </property>
    <property name="text">
-    <string>Жирный</string>
+    <string>黑体</string>
    </property>
    <property name="toolTip">
-    <string>Жирный текст</string>
+    <string>黑体字</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+B</string>
@@ -233,10 +233,10 @@
      <normaloff>:/underlined-u.png</normaloff>:/underlined-u.png</iconset>
    </property>
    <property name="text">
-    <string>Подчеркнутый</string>
+    <string>下划线</string>
    </property>
    <property name="toolTip">
-    <string>Подчеркнутый текст</string>
+    <string>下划线文本</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+U</string>
@@ -251,10 +251,10 @@
      <normaloff>:/format-text-italic.png</normaloff>:/format-text-italic.png</iconset>
    </property>
    <property name="text">
-    <string>Курсив</string>
+    <string>斜体</string>
    </property>
    <property name="toolTip">
-    <string>Курсивный текст</string>
+    <string>斜体字</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+I</string>
@@ -266,10 +266,10 @@
      <normaloff>:/New.png</normaloff>:/New.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Создать</string>
+    <string>&amp;创建</string>
    </property>
    <property name="toolTip">
-    <string>Создать новый файл</string>
+    <string>创建新的文件</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
@@ -281,10 +281,10 @@
      <normaloff>:/Open.png</normaloff>:/Open.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Открыть</string>
+    <string>&amp;打开</string>
    </property>
    <property name="toolTip">
-    <string>Открыть файл</string>
+    <string>打开文件</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
@@ -296,10 +296,10 @@
      <normaloff>:/Save.png</normaloff>:/Save.png</iconset>
    </property>
    <property name="text">
-    <string>&amp;Сохранить</string>
+    <string>&amp;保存</string>
    </property>
    <property name="toolTip">
-    <string>Сохранить файл</string>
+    <string>保存文件</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>

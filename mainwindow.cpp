@@ -6,18 +6,19 @@
 #include "my_diagram_item.h"
 #include "my_diagram_text_item.h"
 
-#include"QToolButton"
-#include"QAbstractButton"
-#include"QLabel"
-#include"QSplitter"
-#include"QMessageBox"
-#include"QString"
-#include"QFileDialog"
-#include "QList"
-#include "QTextDocument"
-#include "QCloseEvent"
-#include "QProcess"
-const int InserttextButton = 20; // константа говорит что мы будем вводить текст в диаграмму
+#include <QAbstractButton>
+#include <QCloseEvent>
+#include <QFileDialog>
+#include <QLabel>
+#include <QList>
+#include <QMessageBox>
+#include <QProcess>
+#include <QSplitter>
+#include <QString>
+#include <QTextDocument>
+#include <QToolButton>
+
+const int InserttextButton = 20; // 常量说我们将在图中输入文字
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -85,37 +86,37 @@ void MainWindow::create_tool_bars()
     pointerButton->setCheckable(true);
     pointerButton->setChecked(true);
     pointerButton->setIcon(QIcon(QPixmap(":/move.png").scaled(47,47)));
-    pointerButton->setToolTip("Простое перемещение объектов");
+    pointerButton->setToolTip("简单的移动对象");
     pointerButton->setIconSize(QSize(50,50));
 
     QToolButton *linePointerButton2 = new QToolButton;
     linePointerButton2->setCheckable(true);
     linePointerButton2->setIcon(QIcon(QPixmap(":/dependency-right.png").scaled(47,47)));
-    linePointerButton2->setToolTip("Зависимость");
+    linePointerButton2->setToolTip("依赖关系");
     linePointerButton2->setIconSize(QSize(50,50));
 
     QToolButton *linePointerButton3 = new QToolButton;
     linePointerButton3->setCheckable(true);
     linePointerButton3->setIcon(QIcon(QPixmap(":/association-right.png").scaled(47,47)));
-    linePointerButton3->setToolTip("Ассоциация");
+    linePointerButton3->setToolTip("联合会");
     linePointerButton3->setIconSize(QSize(50,50));
 
     QToolButton *linePointerButton4 = new QToolButton;
     linePointerButton4->setCheckable(true);
     linePointerButton4->setIcon(QIcon(QPixmap(":/aggregation-left.png").scaled(47,47)));
-    linePointerButton4->setToolTip("Агрегация");
+    linePointerButton4->setToolTip("聚集作用");
     linePointerButton4->setIconSize(QSize(50,50));
 
     QToolButton *linePointerButton5 = new QToolButton;
     linePointerButton5->setCheckable(true);
     linePointerButton5->setIcon(QIcon(QPixmap(":/composition-left.png").scaled(47,47)));
-    linePointerButton5->setToolTip("Композиция");
+    linePointerButton5->setToolTip("组成");
     linePointerButton5->setIconSize(QSize(50,50));
 
     QToolButton *linePointerButton6 = new QToolButton;
     linePointerButton6->setCheckable(true);
     linePointerButton6->setIcon(QIcon(QPixmap(":/generalization.png").scaled(47,47)));
-    linePointerButton6->setToolTip("Обобщение");
+    linePointerButton6->setToolTip("概括");
     linePointerButton6->setIconSize(QSize(50,50));
 
     // Зависимость (линия пунктир на конце стрелка),

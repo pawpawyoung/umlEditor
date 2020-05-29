@@ -21,33 +21,33 @@ My_diagram_text_item::My_diagram_text_item(QGraphicsItem *parent, QGraphicsScene
         switch(myNameTextType)
         {
         case Class:
-            setPlainText("Имя Класса");
+            setPlainText("з±»еђЌз§°");
             break;
         case Attribute:
-            setPlainText("Атрибуты");
+            setPlainText("е±ћжЂ§");
             break;
         case Operation:
-            setPlainText("Операции");
+            setPlainText("дёљеЉЎ");
             break;
         case Interface:
             setTextWidth(230);
-            setPlainText("                    <<Интерфейс>>");
+            setPlainText("                    <<жЋҐеЏЈ>>");
             break;
         case Actor_name:
             setTextWidth(90);
-            setPlainText("Новый актер");
+            setPlainText("ж–°жј”е‘");
             break;
         case Option_disc:
             setTextWidth(230);
-            setPlainText("Новый вариант использования");
+            setPlainText("ж–°зљ„дЅїз”Ёж–№жЎ€");
             break;
         case State_name:
             setTextWidth(230);
-            setPlainText("               Имя нового состояния");
+            setPlainText("               ж–°зљ„зЉ¶жЂЃеђЌз§°");
             break;
         case State_disc:
             setTextWidth(230);
-            setPlainText("Список внутренних действий");
+            setPlainText("е†…йѓЁжґ»еЉЁе€—иЎЁ");
             break;
         }
         break;
@@ -65,32 +65,32 @@ QVariant My_diagram_text_item::itemChange(GraphicsItemChange change,const QVaria
 
 void My_diagram_text_item::focusOutEvent(QFocusEvent *event)
 {
-    setTextInteractionFlags(Qt::NoTextInteraction);//ставим взаимодействие с текстом невозможно!
+    setTextInteractionFlags(Qt::NoTextInteraction);//СЃС‚Р°РІРёРј РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ СЃ С‚РµРєСЃС‚РѕРј РЅРµРІРѕР·РјРѕР¶РЅРѕ!
     if(myItemTextType==Margin && myNameTextType==Class && document()->toPlainText() == "")
-        setPlainText("Имя Класса");
-    if(myItemTextType==Margin && myNameTextType==Attribute && (document()->toPlainText() == "Новый_Атрибут : Тип" || document()->toPlainText() == ""))
-        setPlainText("Атрибуты");
-    if(myItemTextType==Margin && myNameTextType==Operation && (document()->toPlainText() == "Новая_Операция()" || document()->toPlainText() == ""))
-        setPlainText("Операции");
-    if(myItemTextType==Margin && myNameTextType==Interface && !document()->toPlainText().contains("<<Интерфейс>>"))
+        setPlainText("з±»еђЌз§°");
+    if(myItemTextType==Margin && myNameTextType==Attribute && (document()->toPlainText() == "ж–°е±ћжЂ§пјљз±»ећ‹" || document()->toPlainText() == ""))
+        setPlainText("е±ћжЂ§");
+    if(myItemTextType==Margin && myNameTextType==Operation && (document()->toPlainText() == "ж–°зљ„ж“ЌдЅњ()" || document()->toPlainText() == ""))
+        setPlainText("дёљеЉЎ");
+    if(myItemTextType==Margin && myNameTextType==Interface && !document()->toPlainText().contains("<<жЋҐеЏЈ>>"))
     {
-        setPlainText("                    <<Интерфейс>>\n" + document()->toPlainText());
+        setPlainText("                    <<жЋҐеЏЈ>>\n" + document()->toPlainText());
     }
     if(document()->toPlainText() == "" && myItemTextType==Margin && myNameTextType==Actor_name)
     {
-        setPlainText("Новый актер");
+        setPlainText("ж–°жј”е‘");
     }
     if(document()->toPlainText() == "" && myItemTextType==Margin && myNameTextType==Option_disc)
     {
-        setPlainText("Новый вариант использования");
+        setPlainText("ж–°зљ„дЅїз”Ёж–№жЎ€");
     }
     if(document()->toPlainText() == "" && myItemTextType==Margin && myNameTextType==State_name)
     {
-        setPlainText("               Имя нового состояния");
+        setPlainText("               ж–°зљ„зЉ¶жЂЃеђЌз§°");
     }
-    if((document()->toPlainText() == "Метка_дeйствия/Выражение_действия" || document()->toPlainText() == "")&& myItemTextType==Margin && myNameTextType==State_disc)
+    if((document()->toPlainText() == "иЎЊеЉЁж ‡еЏ·" || document()->toPlainText() == "")&& myItemTextType==Margin && myNameTextType==State_disc)
     {
-        setPlainText("Список внутренних действий");
+        setPlainText("е†…йѓЁжґ»еЉЁе€—иЎЁ");
     }
     emit lostFocus(this);
     QGraphicsTextItem::focusOutEvent(event);
@@ -101,31 +101,31 @@ void My_diagram_text_item::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event
     setTextInteractionFlags(Qt::TextEditorInteraction);
     QGraphicsTextItem::mouseDoubleClickEvent(event);
     setFocus();
-    if(myItemTextType==Margin && myNameTextType==Class && document()->toPlainText() == "Имя Класса")
+    if(myItemTextType==Margin && myNameTextType==Class && document()->toPlainText() == "з±»еђЌз§°")
     {
         document()->setPlainText("");
     }
-    if(myItemTextType==Margin && myNameTextType==Attribute && document()->toPlainText() == "Атрибуты")
+    if(myItemTextType==Margin && myNameTextType==Attribute && document()->toPlainText() == "е±ћжЂ§")
     {
-        document()->setPlainText("Новый_Атрибут : Тип");
+        document()->setPlainText("ж–°е±ћжЂ§пјљз±»ећ‹");
     }
-    if(myItemTextType==Margin && myNameTextType==Operation && document()->toPlainText() == "Операции")
+    if(myItemTextType==Margin && myNameTextType==Operation && document()->toPlainText() == "дёљеЉЎ")
     {
-        document()->setPlainText("Новая_Операция()");
+        document()->setPlainText("ж–°зљ„ж“ЌдЅњ()");
     }
-    if(myItemTextType==Margin && myNameTextType==Interface && document()->toPlainText() == "                    <<Интерфейс>>")
+    if(myItemTextType==Margin && myNameTextType==Interface && document()->toPlainText() == "                    <<жЋҐеЏЈ>>")
          document()->setPlainText("");
 
-    if(myItemTextType==Margin && myNameTextType==Actor_name && document()->toPlainText() == "Новый актер")
+    if(myItemTextType==Margin && myNameTextType==Actor_name && document()->toPlainText() == "ж–°жј”е‘")
          document()->setPlainText("");
 
-    if(myItemTextType==Margin && myNameTextType==Option_disc && document()->toPlainText() == "Новый вариант использования")
+    if(myItemTextType==Margin && myNameTextType==Option_disc && document()->toPlainText() == "ж–°зљ„дЅїз”Ёж–№жЎ€")
          document()->setPlainText("");
 
-    if(myItemTextType==Margin && myNameTextType==State_name && document()->toPlainText() == "               Имя нового состояния")
+    if(myItemTextType==Margin && myNameTextType==State_name && document()->toPlainText() == "               ж–°зљ„зЉ¶жЂЃеђЌз§°")
          document()->setPlainText("");
-    if(myItemTextType==Margin && myNameTextType==State_disc && document()->toPlainText() == "Список внутренних действий")
-         document()->setPlainText("Метка_дeйствия/Выражение_действия");
+    if(myItemTextType==Margin && myNameTextType==State_disc && document()->toPlainText() == "е†…йѓЁжґ»еЉЁе€—иЎЁ")
+         document()->setPlainText("иЎЊеЉЁж ‡еЏ·");
     emit items_changed();
 }
 QDataStream &operator<<(QDataStream &out, const My_diagram_text_item &boxItem)
